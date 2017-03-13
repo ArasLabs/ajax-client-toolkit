@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Login to Innovator</title>
+    <script type="text/javascript" src="js/iom.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/default.css"/>
+</head>
+<body>
+<script type="text/javascript" language="javascript">
+  onload = function() {
+    var db_select = document.getElementById("value.db");
+    var db_names = dialogArguments["dbs"];
+    for (var i = 0; i < db_names.length; i++) {
+      db_select.options[i] = new Option(db_names[i], db_names[i], ((i == 0) ? true : false), false);
+    }
+  }
+
+  function submitLogin() {
+    var user = document.getElementById("value.login_name").value;
+    if (!user) {
+      alert("User name must be specified");
+      return;
+    }
+    returnValue = new Object();
+    returnValue.user = user;
+    returnValue.db = document.getElementById("value.db").value;
+    returnValue.password = document.getElementById("value.password").value;
+    window.close();
+    return true;
+  }
+
+  function cancelLogin() {
+    returnValue = null;
+    window.close();
+    return false;
+  }
+</script>
+
+<table id="form" border="0px" cellspacing="0" cellpadding="0">
+  <tr><td style="height:30px;"></td></tr>
+  <!-- input credentials, db and server url -->
+  <tr>
+   <td>
+    <table style="display:inline" cellspacing="1px" cellpadding="0px">
+      <tr>
+        <td style="text-align:right;"><span class="prompt" id="label.login_name">User:&nbsp;</span></td>
+        <td style="text-align:left;"><input type="text" id="value.login_name" /></td>
+      </tr>
+      <tr>
+        <td style="text-align:right;"><span class="prompt" id="label.password">Password:&nbsp;</span></td>
+        <td style="text-align:left;"><input type="password" id="value.password" /></td>
+      </tr>
+      <tr>
+         <td style="text-align:right;"><span class="prompt" id="label.db">Database:&nbsp;</span></td>
+         <td style="text-align:left;">
+           <select id="value.db">
+           </select>
+         </td>
+      </tr>
+      <tr>
+      </tr>
+    </table>
+   </td>
+  </tr>
+  <!-- submit and cancel buttons -->
+  <tr><td style="height:20px;"></td></tr>
+  <tr>
+    <td style="text-align:center; vertical-align:middle;">
+      <table style="display:inline;" border="0px" cellspacing="2px" cellpadding="0px">
+        <tr>
+          <td align="right"><input id="button.login" type="button" onclick="submitLogin()" value="Login"/></td>
+          <td align="left"><input id="button.cancel" type="button" onclick="cancelLogin();" value="Cancel"/></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr><td style="height:100%;"></td></tr>
+</table>
+</body>
+</html>

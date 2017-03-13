@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <link rel="stylesheet" type="text/css" href="css/default.css"/>
+    <script type="text/javascript" src="js/iom.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" language="ecmascript">
+      function onExit() {
+        ic().HttpConnector.logout();
+        
+        var no_history = (_is_IE_) ? 0 : 1;
+        if (history.length > no_history)
+          history.back();
+        else {
+          if (_is_IE_)
+            top.close();
+          else {
+            alert("The browser does NOT allow to close the window|tab programmatically.\nYou have to close the window|tab manually");
+          }
+        }
+      }
+
+      function onDownload() {
+        var url = ic().baseUrl + "/Client/biclient/readme.doc";
+        setTimeout("window.open('" + url + "','Download')", 50);
+      }
+    </script>
+</head>
+<body>
+<table id='toolbar_container'>
+  <tr>
+    <td align='right'><a style='font-weight: bold;' href='javascript:ic().grid.newItem()'>New</a></td>
+    <td>&nbsp;|&nbsp;</td>
+    <td align='right'><a style='font-weight: bold;' href='javascript:ic().grid.refreshTable()'>Run Search</a></td>
+    <td>&nbsp;|&nbsp;</td>
+    <td align='right'><a style='font-weight: bold;' href='javascript:onDownload()'>Help</a></td>
+    <td>&nbsp;|&nbsp;</td>
+    <td align='right'><a style='font-weight: bold;' href='javascript:onExit()'>Exit</a></td>
+  </tr>
+</table>
+</body>
+</html>

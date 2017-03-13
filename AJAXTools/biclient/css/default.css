@@ -1,0 +1,116 @@
+body
+{
+  background-color: #ffffff;
+}
+th
+{
+  font-weight: bold;
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  background-color: buttonface;
+}
+td
+{
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+a:hover
+{
+  text-decoration: underline;
+}
+a
+{
+  font-size: 8pt;
+  color: #000000;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  text-decoration: none;
+}
+fieldset
+{
+  display: inline;
+  border-right: 2px groove;
+  border-top: 2px groove;
+  border-left: 2px groove;
+  border-bottom: 2px groove;
+}
+table
+{
+  border-width: 0px;
+}
+legend
+{
+  font-size: 8pt;
+  text-transform: capitalize;
+  color: #000000;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+li
+{
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+input
+{
+  font-family: tahoma;
+  font-size: 8pt;
+}
+
+textarea
+{
+  font-family: tahoma;
+  font-size: 8pt;
+  border-top-width: 2px;
+  border-left-width: 2px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+select
+{
+  font-size: 8pt;
+  font-family: tahoma;
+}
+p
+{
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+
+.prompt
+{
+  font-weight: bold;
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+  text-align: right;
+}
+.tiny
+{
+  font-size: 6pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+.small
+{
+  font-size: 8pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+.medium
+{
+  font-size: 9pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+.big
+{
+  font-size: 10pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+.vbig
+{
+  font-size: 12pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}
+.vvbig
+{
+  font-weight: bold;
+  font-size: 14pt;
+  font-family: tahoma, arial, helvetica, sans-serif;
+}

@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Search</title>
+    <link rel="stylesheet" type="text/css" href="css/default.css"/>
+    <link rel="stylesheet" type="text/css" href="css/grid.css"/>
+
+    <script type="text/javascript" src="js/iom.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body>
+<script type="text/javascript" language="javascript">
+  var grid = null;
+
+  onload = function() {
+    var t = document.getElementById("search_table");
+    top.InnovatorClient = dialogArguments["ic"];
+
+    var tname = dialogArguments["type"];
+    grid = new GridPanel(tname, window, t, "onSelectItem");
+  }
+
+  function updateGrid() {
+    grid.refreshTable();
+  }
+
+  function closeWindow() {
+    window.close();
+    return false;
+  }
+
+  function onSelectItem(id, key) {
+    returnValue = new Object();
+    returnValue.item_id = id;
+    returnValue.item_key = key;
+    window.close();
+    return true;
+  }
+  
+</script>
+
+<table id='item_toolbar' style='margin:10px 10px 10px 10px;'>
+  <tr><td><a style='font-weight: bold;' href='javascript:updateGrid()'>Run Search</a></td><td>&nbsp;|&nbsp;</td><td><a style='font-weight: bold;' href='javascript:closeWindow()'>Close</a></td></tr>
+</table>
+<hr />
+<table id="search_table" style='margin:10px 10px 10px 10px; width:100%;'>
+</table>
+</body>
+</html>

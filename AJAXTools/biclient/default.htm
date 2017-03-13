@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Aras Innovator</title>
+    <style type="text/css">
+      frameset.border
+      {
+        border-bottom: solid 2px buttonface;
+        border-right: solid 2px buttonface;
+      }
+    </style>
+    <script type="text/javascript" src="js/iom.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" language="javascript">
+      onload = function() {
+        var conn = new HttpConnector(ic().baseUrl);
+        var dblist = new Object();
+        dblist["dbs"] = conn.getDbList();
+        var login_data = showModalDialog("login.htm", dblist, "dialogHeight:160px; dialogWidth:300px; center:yes; scroll:no; resizable:no; status:no; help:no;");
+        if (login_data) {
+          conn = new HttpConnector(ic().baseUrl, login_data.db, login_data.user, login_data.password);
+          var result = conn.login();
+          if (result.isError())
+            alert("Failed to login to Innovator: " + result.getAml());
+          else {
+            ic().HttpConnector = conn;
+            var fframe;
+            if (_is_IE_) {
+              fframe = top.frames.full_frameset;
+              fframe.rows = "0,100%";
+            }
+            else {
+              fframe = document.getElementById("full_frameset");
+              fframe.setAttribute("rows", "0,100%");
+            }
+
+            ic().toc = new TocPanel();
+            ic().grid = new GridPanel();
+            ic().details = new DetailsPanel();
+          }
+        }
+      }
+    </script>
+</head>
+<frameset id='full_frameset' rows='100%,*' frameborder='0' border='0'>
+  <frame id='invisible' name='invisible' noresize />
+  <frameset id='main_page_frameset' rows='50,*' style='border' frameborder='1' border='2'>
+    <frame id='toolbar' src='toolbar.htm' name='toolbar' scrolling='no' noresize/>
+    <frameset id='toc_and_grid_frameset' cols='200,*' style='border' frameborder='1' border='2'>
+      <frame id='toc' src='toc.htm' name='toc' scrolling='auto' noresize/>
+      <frameset id='grid_frameset' rows='50%,*' style='border' frameborder='1' border='2'>
+        <frame id='grid' src='grid.htm' name='grid' scrolling='auto' />
+        <frame id='details' src='details.htm' name='details' scrolling='auto'/>
+      </frameset>
+    </frameset>
+  </frameset>
+</frameset>
+</html>
